@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const axios = require("axios");
+const axios = require('axios');
+
 
 const app = express();
 
@@ -10,13 +11,14 @@ app.use(cors());
 
 app.get("/getAllCurrencies" , async (req,res)=>{
 
-   const nameURL = "https://docs.openexchangerates.org/reference/currencies-json?app_id=84013cb2f52b4c6f8717b3b20e26cd33";
+   const nameURL = 'https://openexchangerates.org/api/currencies.json?prettyprint=false&show_alternative=false&show_inactive=false&app_id=84013cb2f52b4c6f8717b3b20e26cd33';
 
    
    
    try{
-    const nameRespones = await axiox.get(nameURL);
-   const nameData = nameRespones.data;
+    const nameResponse = await axios.get(nameURL);
+
+   const nameData = nameResponse.data;
 
    return res.json(nameData);
 
