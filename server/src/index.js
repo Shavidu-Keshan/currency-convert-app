@@ -25,8 +25,23 @@ app.get("/getAllCurrencies" , async (req,res)=>{
    }catch(err){
     console.error(err);
    }
-})
+});
+//get the target amount
+app.get("/convert", async(req,res)=>{
+    const{
+        date,
+            sourceCurrency,
+            targetCureency,
+            amountInSourceCurrency,
+    } = req.query;
+    try{
+        const dataUrl = 'https://openexchangerates.org/api/historical/$(date).json?app_id=84013cb2f52b4c6f8717b3b20e26cd33';
+        const dataResponse = await axios.get(dataUrl)
+    }catch(err){
+    console.error(err);
 
+    }
+})
 //listen to a port
 app.listen(5000, () => {
     console.log("SERVER STARTED");
